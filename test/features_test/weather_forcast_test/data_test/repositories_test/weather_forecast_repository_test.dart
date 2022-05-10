@@ -50,7 +50,7 @@ void main() {
       when(dataSourceImpl.getWeatherForecast(any))
           .thenAnswer((realInvocation) async => const Left(ServerException(1)));
       final result = await repositoryImpl.getWeatherForecast('test');
-      expect(result, const Left(ServerFailure('error happened with code 1')));
+      expect(result, const Left(ServerFailure('Server error happened \n Error code 1')));
       verify(dataSourceImpl.getWeatherForecast('test'));
       verify(networkInfoImpl.getCurrentConnectionState);
     });
@@ -67,7 +67,7 @@ void main() {
       expect(
           result,
           const Left(NetworkFailure(
-              'network error please check your internet connection')));
+              'Network error happened \n please check your internet connection')));
     });
   });
 }
