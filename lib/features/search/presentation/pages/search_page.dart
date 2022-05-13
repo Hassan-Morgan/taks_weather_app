@@ -5,6 +5,7 @@ import 'package:taqs/core/presentation/shared_widgets/error.dart';
 import 'package:taqs/core/presentation/shared_widgets/loading.dart';
 import 'package:taqs/features/search/domain/entities/search_entity_list.dart';
 import 'package:taqs/features/search/presentation/logic/search_cubit/search_cubit.dart';
+import 'package:taqs/features/search/presentation/logic/search_weather_cubit/search_weather_cubit.dart';
 import 'package:taqs/features/search/presentation/pages/search_result_weather.dart';
 import 'package:taqs/features/weather_forecast/presentation/widgets/details_container.dart';
 
@@ -20,8 +21,15 @@ class SearchPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => sl<SearchCubit>(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => sl<SearchCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => sl<SearchWeatherCubit>(),
+        )
+      ],
       child: BlocBuilder<SearchCubit, SearchStates>(
         builder: (context, state) => state.maybeWhen(
           orElse: () => _searchInitScreen(context),
@@ -69,8 +77,11 @@ class SearchPage extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => SearchWeatherPage(
-                        cityName: list.searchEntity[index].name,
+                      builder: (_) => BlocProvider.value(
+                        value: BlocProvider.of<SearchWeatherCubit>(context),
+                        child: SearchWeatherPage(
+                          cityName: list.searchEntity[index].name,
+                        ),
                       ),
                     ),
                   );

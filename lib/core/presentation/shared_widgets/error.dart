@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:taqs/features/search/presentation/pages/search_page.dart';
 import 'package:taqs/features/weather_forecast/presentation/logic/weather_forecast_cubit.dart';
 
 import 'custom_button.dart';
@@ -37,14 +39,21 @@ class ErrorPage extends StatelessWidget {
           const SizedBox(
             height: 30,
           ),
-          if (pageIndex == 1)
-            CustomButton(
-              onPressed: () {
+          CustomButton(
+            onPressed: () {
+              if (pageIndex == 1) {
                 BlocProvider.of<WeatherForecastCubit>(context)
                     .getWeatherForecastWithLocation();
-              },
-              buttonName: 'Retry',
-            ),
+              } else if (pageIndex == 2) {
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SearchPage(),
+                    ));
+              }
+            },
+            buttonName: 'Retry',
+          ),
         ],
       ),
     );

@@ -9,6 +9,7 @@ class SearchWeatherCubit extends Cubit<SearchWeatherStates> {
   final GetWeatherForecastUseCase useCase;
 
   void getWeatherByCityName(String cityName) async {
+    emit(SearchWeatherStates.loading());
     final result = await useCase(GetWeatherForecastParams(q: cityName));
     result.fold(
       (l) => emit(SearchWeatherStates.error(l.message)),

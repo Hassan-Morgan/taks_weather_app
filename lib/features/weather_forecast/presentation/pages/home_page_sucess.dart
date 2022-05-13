@@ -189,6 +189,7 @@ class HomePageSuccess extends StatelessWidget {
           Text(
             hourlyWeatherEntity.condition.text,
             textAlign: TextAlign.center,
+            maxLines: 2,
             style: TextStyle(
               color: Theme.of(context).primaryColor,
             ),

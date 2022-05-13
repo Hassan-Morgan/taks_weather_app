@@ -37,10 +37,16 @@ class DetailsItem extends StatelessWidget {
               ),
             ],
           ),
-          Text(
-            "$value",
-            style: TextStyle(
-              color: Theme.of(context).primaryColor,
+          Expanded(
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: Text(
+                "$value",
+                maxLines: 1,
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                ),
+              ),
             ),
           ),
         ],

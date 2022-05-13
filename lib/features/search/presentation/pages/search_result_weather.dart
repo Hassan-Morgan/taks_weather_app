@@ -8,7 +8,7 @@ import 'package:taqs/features/search/presentation/logic/search_weather_cubit/sea
 import '../../../../injection.dart';
 import '../../../weather_forecast/presentation/pages/home_page_sucess.dart';
 
-class SearchWeatherPage extends StatelessWidget {
+class SearchWeatherPage extends StatefulWidget {
   final String cityName;
 
   const SearchWeatherPage({
@@ -17,26 +17,36 @@ class SearchWeatherPage extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<SearchWeatherPage> createState() => _SearchWeatherPageState();
+}
+
+class _SearchWeatherPageState extends State<SearchWeatherPage> {
+  @override
+  void initState() {
+    super.initState();
+    BlocProvider.of<SearchWeatherCubit>(context)
+        .getWeatherByCityName(widget.cityName);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) =>
-          sl<SearchWeatherCubit>()..getWeatherByCityName(cityName),
-      child: BlocBuilder<SearchWeatherCubit, SearchWeatherStates>(
-        builder: (context, state) => state.maybeWhen(
-          orElse: () => const SizedBox(),
-          success: (entity) => Scaffold(
-            appBar: AppBar(
-              elevation: 0.0,
-              backgroundColor: Colors.transparent,
-            ),
+    return BlocBuilder<SearchWeatherCubit, SearchWeatherStates>(
+      builder: (context, state) => state.maybeWhen(
+        orElse: () => const SizedBox(),
+        success: (entity) => Scaffold(
+          appBar: AppBar(
+            elevation: 0.0,
             backgroundColor: Colors.transparent,
-            body: HomePageSuccess(
-              entity: entity,
-            ),
+            iconTheme: IconThemeData(color: Theme.of(context).primaryColor),
           ),
-          loading: () => const LoadingPage(),
-          error: (error) => ErrorPage(error: error, pageIndex: 2),
+          extendBodyBehindAppBar: true,
+          backgroundColor: Colors.transparent,
+          body: HomePageSuccess(
+            entity: entity,
+          ),
         ),
+        loading: () => const LoadingPage(),
+        error: (error) => ErrorPage(error: error, pageIndex: 2),
       ),
     );
   }
