@@ -6,6 +6,8 @@ class DayEntity extends Equatable {
   const DayEntity({
     required this.maxTempC,
     required this.maxTempF,
+    required this.avgTempF,
+    required this.avgTempC,
     required this.minTempC,
     required this.minTempF,
     required this.maxWindMph,
@@ -23,6 +25,8 @@ class DayEntity extends Equatable {
   final double maxTempF;
   final double? minTempC;
   final double? minTempF;
+  final double? avgTempC;
+  final double? avgTempF;
   final double? maxWindMph;
   final double maxWindKph;
   final double avgVisKm;

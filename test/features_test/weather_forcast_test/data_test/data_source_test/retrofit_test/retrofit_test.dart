@@ -33,9 +33,6 @@ void main() {
     statusCode: 200,
   );
 
-  final Map<String, dynamic> errorJsonResponse = {
-    "error": {"code": 1, "message": "test message"}
-  };
 
   final dioError = DioError(
     requestOptions: RequestOptions(

@@ -26,7 +26,7 @@ class AppLayout extends StatelessWidget {
         child: AutoTabsScaffold(
           routes: const [
             HomeRouter(),
-            AddRouter(),
+            SearchRouter(),
             SettingsRouter(),
           ],
           backgroundColor: Colors.transparent,

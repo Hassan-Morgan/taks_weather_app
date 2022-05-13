@@ -16,7 +16,10 @@ class HomePage extends StatelessWidget {
     return BlocBuilder<WeatherForecastCubit, WeatherForecastStates>(
       builder: (context, state) => state.when(
         loading: () => const LoadingPage(),
-        error: (error) => ErrorPage(error: error),
+        error: (error) => ErrorPage(
+          error: error,
+          pageIndex: 1,
+        ),
         success: (data) => HomePageSuccess(entity: data),
       ),
     );

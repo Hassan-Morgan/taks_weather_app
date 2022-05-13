@@ -12,31 +12,7 @@ part of 'weather_forecast_states.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$WeatherForecastStatesTearOff {
-  const _$WeatherForecastStatesTearOff();
-
-  _loading loading() {
-    return _loading();
-  }
-
-  _error error(String error) {
-    return _error(
-      error,
-    );
-  }
-
-  _success success(WeatherEntity entity) {
-    return _success(
-      entity,
-    );
-  }
-}
-
-/// @nodoc
-const $WeatherForecastStates = _$WeatherForecastStatesTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$WeatherForecastStates {
@@ -104,20 +80,21 @@ class _$WeatherForecastStatesCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$loadingCopyWith<$Res> {
-  factory _$loadingCopyWith(_loading value, $Res Function(_loading) then) =
-      __$loadingCopyWithImpl<$Res>;
+abstract class _$$_loadingCopyWith<$Res> {
+  factory _$$_loadingCopyWith(
+          _$_loading value, $Res Function(_$_loading) then) =
+      __$$_loadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$loadingCopyWithImpl<$Res>
+class __$$_loadingCopyWithImpl<$Res>
     extends _$WeatherForecastStatesCopyWithImpl<$Res>
-    implements _$loadingCopyWith<$Res> {
-  __$loadingCopyWithImpl(_loading _value, $Res Function(_loading) _then)
-      : super(_value, (v) => _then(v as _loading));
+    implements _$$_loadingCopyWith<$Res> {
+  __$$_loadingCopyWithImpl(_$_loading _value, $Res Function(_$_loading) _then)
+      : super(_value, (v) => _then(v as _$_loading));
 
   @override
-  _loading get _value => super._value as _loading;
+  _$_loading get _value => super._value as _$_loading;
 }
 
 /// @nodoc
@@ -133,7 +110,7 @@ class _$_loading implements _loading {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _loading);
+        (other.runtimeType == runtimeType && other is _$_loading);
   }
 
   @override
@@ -213,27 +190,27 @@ abstract class _loading implements WeatherForecastStates {
 }
 
 /// @nodoc
-abstract class _$errorCopyWith<$Res> {
-  factory _$errorCopyWith(_error value, $Res Function(_error) then) =
-      __$errorCopyWithImpl<$Res>;
+abstract class _$$_errorCopyWith<$Res> {
+  factory _$$_errorCopyWith(_$_error value, $Res Function(_$_error) then) =
+      __$$_errorCopyWithImpl<$Res>;
   $Res call({String error});
 }
 
 /// @nodoc
-class __$errorCopyWithImpl<$Res>
+class __$$_errorCopyWithImpl<$Res>
     extends _$WeatherForecastStatesCopyWithImpl<$Res>
-    implements _$errorCopyWith<$Res> {
-  __$errorCopyWithImpl(_error _value, $Res Function(_error) _then)
-      : super(_value, (v) => _then(v as _error));
+    implements _$$_errorCopyWith<$Res> {
+  __$$_errorCopyWithImpl(_$_error _value, $Res Function(_$_error) _then)
+      : super(_value, (v) => _then(v as _$_error));
 
   @override
-  _error get _value => super._value as _error;
+  _$_error get _value => super._value as _$_error;
 
   @override
   $Res call({
     Object? error = freezed,
   }) {
-    return _then(_error(
+    return _then(_$_error(
       error == freezed
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -259,7 +236,7 @@ class _$_error implements _error {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _error &&
+            other is _$_error &&
             const DeepCollectionEquality().equals(other.error, error));
   }
 
@@ -269,8 +246,8 @@ class _$_error implements _error {
 
   @JsonKey(ignore: true)
   @override
-  _$errorCopyWith<_error> get copyWith =>
-      __$errorCopyWithImpl<_error>(this, _$identity);
+  _$$_errorCopyWith<_$_error> get copyWith =>
+      __$$_errorCopyWithImpl<_$_error>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -342,35 +319,37 @@ class _$_error implements _error {
 }
 
 abstract class _error implements WeatherForecastStates {
-  factory _error(String error) = _$_error;
+  factory _error(final String error) = _$_error;
 
-  String get error;
+  String get error => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$errorCopyWith<_error> get copyWith => throw _privateConstructorUsedError;
+  _$$_errorCopyWith<_$_error> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$successCopyWith<$Res> {
-  factory _$successCopyWith(_success value, $Res Function(_success) then) =
-      __$successCopyWithImpl<$Res>;
+abstract class _$$_successCopyWith<$Res> {
+  factory _$$_successCopyWith(
+          _$_success value, $Res Function(_$_success) then) =
+      __$$_successCopyWithImpl<$Res>;
   $Res call({WeatherEntity entity});
 }
 
 /// @nodoc
-class __$successCopyWithImpl<$Res>
+class __$$_successCopyWithImpl<$Res>
     extends _$WeatherForecastStatesCopyWithImpl<$Res>
-    implements _$successCopyWith<$Res> {
-  __$successCopyWithImpl(_success _value, $Res Function(_success) _then)
-      : super(_value, (v) => _then(v as _success));
+    implements _$$_successCopyWith<$Res> {
+  __$$_successCopyWithImpl(_$_success _value, $Res Function(_$_success) _then)
+      : super(_value, (v) => _then(v as _$_success));
 
   @override
-  _success get _value => super._value as _success;
+  _$_success get _value => super._value as _$_success;
 
   @override
   $Res call({
     Object? entity = freezed,
   }) {
-    return _then(_success(
+    return _then(_$_success(
       entity == freezed
           ? _value.entity
           : entity // ignore: cast_nullable_to_non_nullable
@@ -396,7 +375,7 @@ class _$_success implements _success {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _success &&
+            other is _$_success &&
             const DeepCollectionEquality().equals(other.entity, entity));
   }
 
@@ -406,8 +385,8 @@ class _$_success implements _success {
 
   @JsonKey(ignore: true)
   @override
-  _$successCopyWith<_success> get copyWith =>
-      __$successCopyWithImpl<_success>(this, _$identity);
+  _$$_successCopyWith<_$_success> get copyWith =>
+      __$$_successCopyWithImpl<_$_success>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -479,10 +458,10 @@ class _$_success implements _success {
 }
 
 abstract class _success implements WeatherForecastStates {
-  factory _success(WeatherEntity entity) = _$_success;
+  factory _success(final WeatherEntity entity) = _$_success;
 
-  WeatherEntity get entity;
+  WeatherEntity get entity => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$successCopyWith<_success> get copyWith =>
+  _$$_successCopyWith<_$_success> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:taqs/core/presentation/app_layout/app_layout.dart';
 import 'package:taqs/features/search/presentation/pages/search_page.dart';
 import 'package:taqs/features/weather_forecast/presentation/pages/current_weather_details.dart';
+import 'package:taqs/features/weather_forecast/presentation/pages/day_details_page.dart';
 import 'package:taqs/features/weather_forecast/presentation/pages/home_page.dart';
 import 'package:taqs/features/settings/presentation/pages/settings_page.dart';
 
@@ -25,19 +26,22 @@ import 'package:taqs/features/settings/presentation/pages/settings_page.dart';
             ),
             AutoRoute(
               path: 'currentWeatherDetails',
-              name: 'currentWeatherDetailsRout',
               page: CurrentWeatherDetails,
             ),
+            AutoRoute(
+              path: 'dayDetailsPage',
+              page: DayDetailsPage,
+            )
           ],
         ),
         AutoRoute(
-          path: 'add',
-          name: 'addRouter',
+          path: 'search',
+          name: 'searchRouter',
           page: EmptyRouterPage,
           children: [
             AutoRoute(
               path: '',
-              page: AddPage,
+              page: SearchPage,
             ),
           ],
         ),

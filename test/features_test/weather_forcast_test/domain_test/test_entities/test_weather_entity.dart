@@ -37,8 +37,10 @@ CurrentWeatherEntity testCurrentWeather = CurrentWeatherEntity(
   gustMph: 1.0,
   gustKph: 1.0,
 );
-WeatherConditionEntity testWeatherCondition =
-    const WeatherConditionEntity(text: 'test condition', icon: 'test icon',);
+WeatherConditionEntity testWeatherCondition = const WeatherConditionEntity(
+  text: 'test condition',
+  icon: 'test icon',
+);
 
 ForecastDayEntity testForecastDayEntity = ForecastDayEntity(
   date: 'test date',
@@ -50,6 +52,8 @@ ForecastDayEntity testForecastDayEntity = ForecastDayEntity(
 DayEntity testDayEntity = DayEntity(
   maxTempC: 1.0,
   maxTempF: 1.0,
+  avgTempF: 1.0,
+  avgTempC: 1.0,
   minTempC: 1.0,
   minTempF: 1.0,
   maxWindMph: 1.0,

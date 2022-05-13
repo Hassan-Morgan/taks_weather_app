@@ -1,0 +1,9 @@
+{
+  "id": 1,
+  "name": "testName",
+  "region": "testRegion",
+  "country": "testCountry",
+  "lat": 1.0,
+  "lon": 1.0,
+  "url": "testURL"
+}

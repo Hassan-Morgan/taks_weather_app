@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:taqs/core/utils/temp_speed_selectors/temprature_selector.dart';
 import 'package:taqs/features/weather_forecast/domain/entities/weather_entity.dart';
 
 import '../../../../core/presentation/resources/color_manager.dart';
+import '../../../../core/utils/temp_and_speed_selectors/temprature_selector.dart';
 
 class CurrentWeatherWidget extends StatelessWidget {
   final WeatherEntity entity;

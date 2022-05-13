@@ -5,6 +5,5 @@ import 'package:taqs/core/errors/failures.dart';
 import '../entities/weather_entity.dart';
 
 abstract class WeatherForecastRepository {
-  Future<Either<Failure, WeatherEntity>> getWeatherForecast(
-      String q);
+  Future<Either<Failure, WeatherEntity>> getWeatherForecast(String q);
 }

@@ -50,6 +50,8 @@ extension WeatherForecastToEntity on WeatherForecastModel {
                     text: e.day.condition.text,
                   ),
                   uv: e.day.uv,
+                  avgTempC: e.day.avgtemp_c,
+                  avgTempF: e.day.avgtemp_f,
                   avgHumidity: e.day.avghumidity,
                   avgVisKm: e.day.avgvis_km,
                   avgVisMiles: e.day.avgvis_miles,

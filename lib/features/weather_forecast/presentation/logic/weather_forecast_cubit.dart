@@ -31,11 +31,6 @@ class WeatherForecastCubit extends Cubit<WeatherForecastStates> {
     );
   }
 
-  void getWeatherForecastByCityName({required String cityName}) {
-    emit(WeatherForecastStates.loading());
-
-    _callGetWeatherUseCase(cityName);
-  }
 
   void _callGetWeatherUseCase(String q) async {
     final result = await useCase(GetWeatherForecastParams(q: q));

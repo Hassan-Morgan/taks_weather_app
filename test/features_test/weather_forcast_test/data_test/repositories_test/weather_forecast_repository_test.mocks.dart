@@ -2,19 +2,15 @@
 // in taqs/test/features_test/weather_forcast_test/data_test/repositories_test/weather_forecast_repository_test.dart.
 // Do not manually edit this file.
 
-import 'dart:async' as _i6;
+import 'dart:async' as _i4;
 
-import 'package:dartz/dartz.dart' as _i3;
-import 'package:internet_connection_checker/internet_connection_checker.dart'
-    as _i4;
+import 'package:dartz/dartz.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:taqs/core/utils/network_info/network_info.dart' as _i8;
+import 'package:taqs/core/utils/network_info/network_info.dart' as _i6;
 import 'package:taqs/features/weather_forecast/data/data_sources/remote_data_source.dart'
-    as _i5;
-import 'package:taqs/features/weather_forecast/data/data_sources/weather_forecast_retrofit/weather_forecast_retrofit.dart'
-    as _i2;
+    as _i3;
 import 'package:taqs/features/weather_forecast/data/models/weather_forecast_model.dart'
-    as _i7;
+    as _i5;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -26,60 +22,37 @@ import 'package:taqs/features/weather_forecast/data/models/weather_forecast_mode
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: camel_case_types
 
-class _FakeWeatherForecastRetrofit_0 extends _i1.Fake
-    implements _i2.WeatherForecastRetrofit {}
+class _FakeEither_0<L, R> extends _i1.Fake implements _i2.Either<L, R> {}
 
-class _FakeEither_1<L, R> extends _i1.Fake implements _i3.Either<L, R> {}
-
-class _FakeInternetConnectionChecker_2 extends _i1.Fake
-    implements _i4.InternetConnectionChecker {}
-
-/// A class which mocks [WeatherForecastDataSourceImpl].
+/// A class which mocks [WeatherForecastDataSource].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockWeatherForecastDataSourceImpl extends _i1.Mock
-    implements _i5.WeatherForecastDataSourceImpl {
-  MockWeatherForecastDataSourceImpl() {
+class MockWeatherForecastDataSource extends _i1.Mock
+    implements _i3.WeatherForecastDataSource {
+  MockWeatherForecastDataSource() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i2.WeatherForecastRetrofit get retrofit =>
-      (super.noSuchMethod(Invocation.getter(#retrofit),
-              returnValue: _FakeWeatherForecastRetrofit_0())
-          as _i2.WeatherForecastRetrofit);
-  @override
-  _i6.Future<_i3.Either<Exception, _i7.WeatherForecastModel>>
+  _i4.Future<_i2.Either<Exception, _i5.WeatherForecastModel>>
       getWeatherForecast(String? q) => (super.noSuchMethod(
               Invocation.method(#getWeatherForecast, [q]),
               returnValue:
-                  Future<_i3.Either<Exception, _i7.WeatherForecastModel>>.value(
-                      _FakeEither_1<Exception, _i7.WeatherForecastModel>()))
-          as _i6.Future<_i3.Either<Exception, _i7.WeatherForecastModel>>);
+                  Future<_i2.Either<Exception, _i5.WeatherForecastModel>>.value(
+                      _FakeEither_0<Exception, _i5.WeatherForecastModel>()))
+          as _i4.Future<_i2.Either<Exception, _i5.WeatherForecastModel>>);
 }
 
-/// A class which mocks [NetworkInfoImpl].
+/// A class which mocks [NetworkInfo].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockNetworkInfoImpl extends _i1.Mock implements _i8.NetworkInfoImpl {
-  MockNetworkInfoImpl() {
+class MockNetworkInfo extends _i1.Mock implements _i6.NetworkInfo {
+  MockNetworkInfo() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i4.InternetConnectionChecker get internetConnectionChecker =>
-      (super.noSuchMethod(Invocation.getter(#internetConnectionChecker),
-              returnValue: _FakeInternetConnectionChecker_2())
-          as _i4.InternetConnectionChecker);
-  @override
-  set internetConnectionChecker(
-          _i4.InternetConnectionChecker? _internetConnectionChecker) =>
-      super.noSuchMethod(
-          Invocation.setter(
-              #internetConnectionChecker, _internetConnectionChecker),
-          returnValueForMissingStub: null);
-  @override
-  _i6.Future<bool> get getCurrentConnectionState =>
+  _i4.Future<bool> get getCurrentConnectionState =>
       (super.noSuchMethod(Invocation.getter(#getCurrentConnectionState),
-          returnValue: Future<bool>.value(false)) as _i6.Future<bool>);
+          returnValue: Future<bool>.value(false)) as _i4.Future<bool>);
 }

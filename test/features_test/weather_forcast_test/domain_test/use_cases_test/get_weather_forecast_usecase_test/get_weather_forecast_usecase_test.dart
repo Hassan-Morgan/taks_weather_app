@@ -37,10 +37,10 @@ void main() {
   test('should return ServerFailure when call the function and error happen',
       () async {
     when(repository.getWeatherForecast(any)).thenAnswer(
-        (realInvocation) async => Left(ServerFailure('testFailure')));
+        (realInvocation) async => const Left(ServerFailure('testFailure')));
     final result =
         await useCase(const GetWeatherForecastParams(q: testCityName));
     verify(repository.getWeatherForecast(testCityName));
-    expect(result, Left(ServerFailure('testFailure')));
+    expect(result, const Left(ServerFailure('testFailure')));
   });
 }

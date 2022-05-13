@@ -84,30 +84,4 @@ void main() {
       });
     });
   });
-
-  group('get location with cityName', () {
-    test(
-        'should set the state to success state with WeatherEntity when call the function and useCase return weatherEntity',
-        () async {
-      when(useCase(any))
-          .thenAnswer((realInvocation) async => Right(testWeatherEntity));
-      cubit.getWeatherForecastByCityName(cityName: 'test');
-      expect(cubit.state, WeatherForecastStates.loading());
-      await untilCalled(useCase(any));
-      verify(useCase(const GetWeatherForecastParams(q: 'test')));
-      expect(cubit.state, WeatherForecastStates.success(testWeatherEntity));
-    });
-
-    test(
-        'should return Failure when call the function and useCase return failure',
-        () async {
-      when(useCase(any)).thenAnswer((realInvocation) async =>
-          const Left(ServerFailure(failureTestMessage)));
-      cubit.getWeatherForecastByCityName(cityName: 'test');
-      expect(cubit.state, WeatherForecastStates.loading());
-      await untilCalled(useCase(any));
-      expect(cubit.state, WeatherForecastStates.error(failureTestMessage));
-      verify(useCase(const GetWeatherForecastParams(q: 'test')));
-    });
-  });
 }

@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:taqs/core/presentation/resources/color_manager.dart';
 import 'package:taqs/core/presentation/shared_widgets/custom_button.dart';
-import 'package:taqs/core/utils/temp_speed_selectors/temprature_selector.dart';
 import 'package:taqs/features/weather_forecast/domain/entities/sub_entities/hourly_weather_entity.dart';
 import 'package:taqs/features/weather_forecast/domain/entities/weather_entity.dart';
 import 'package:taqs/features/weather_forecast/presentation/logic/weather_forecast_cubit.dart';
 import 'package:taqs/features/weather_forecast/presentation/pages/current_weather_details.dart';
+import 'package:taqs/features/weather_forecast/presentation/pages/day_details_page.dart';
 import 'package:taqs/features/weather_forecast/presentation/widgets/current_weather_widget.dart';
+
+import '../../../../core/utils/temp_and_speed_selectors/temprature_selector.dart';
+import '../../domain/entities/sub_entities/forecast_entity.dart';
 
 class HomePageSuccess extends StatelessWidget {
   final WeatherEntity entity;
@@ -62,7 +65,7 @@ class HomePageSuccess extends StatelessWidget {
                   height: 20,
                 ),
                 _daysWeather(
-                  details: entity.forecast[0].hour,
+                  forecast: entity.forecast[0],
                   title: 'Today',
                   context: context,
                 ),
@@ -71,7 +74,7 @@ class HomePageSuccess extends StatelessWidget {
                 ),
                 _daysWeather(
                   title: 'Tomorrow',
-                  details: entity.forecast[1].hour,
+                  forecast: entity.forecast[1],
                   context: context,
                 ),
                 const SizedBox(
@@ -79,7 +82,7 @@ class HomePageSuccess extends StatelessWidget {
                 ),
                 _daysWeather(
                   title: 'After Tomorrow',
-                  details: entity.forecast[2].hour,
+                  forecast: entity.forecast[2],
                   context: context,
                 ),
               ],
@@ -92,7 +95,7 @@ class HomePageSuccess extends StatelessWidget {
 
   Widget _daysWeather({
     required String title,
-    required List details,
+    required ForecastDayEntity forecast,
     required BuildContext context,
   }) {
     return Column(
@@ -108,9 +111,26 @@ class HomePageSuccess extends StatelessWidget {
               ),
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  PageRouteBuilder(
+                      pageBuilder: (context, animation, secondaryAnimation) =>
+                          DayDetailsPage(
+                            astro: forecast.astro,
+                            day: forecast.day,
+                          ),
+                      transitionsBuilder:
+                          (context, animation, secondaryAnimation, child) {
+                        return ScaleTransition(
+                          scale: animation,
+                          child: child,
+                        );
+                      }),
+                );
+              },
               child: const Text(
-                'full details',
+                'details',
                 style: TextStyle(
                   color: ColorManager.redColor,
                 ),
@@ -123,14 +143,14 @@ class HomePageSuccess extends StatelessWidget {
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) => _weatherCard(
-              details[index],
+              forecast.hour[index],
               context,
             ),
             separatorBuilder: (BuildContext context, int index) =>
                 const SizedBox(
               width: 10,
             ),
-            itemCount: details.length,
+            itemCount: forecast.hour.length,
           ),
         ),
       ],
