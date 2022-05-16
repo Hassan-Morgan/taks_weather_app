@@ -48,7 +48,7 @@ void main() {
     final result =
         await weatherForecastDataSourceImpl.getWeatherForecast('test');
 
-    expect(result, const Left(ServerException(1)));
+    expect(result, const Left(ServerException()));
     verify(retrofit.getWeatherForecast(API_KEY, 'test', 10));
   });
 }

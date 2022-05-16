@@ -49,10 +49,12 @@ void main() {
         'should return ServerFailure when call the getWeatherForecast and return ServerException',
         () async {
       when(dataSource.getWeatherForecast(any))
-          .thenAnswer((realInvocation) async => const Left(ServerException(1)));
+          .thenAnswer((realInvocation) async => const Left(ServerException()));
       final result = await repository.getWeatherForecast('test');
-      expect(result,
-          const Left(ServerFailure('Server error happened \n Error code 1')));
+      expect(
+          result,
+          const Left(ServerFailure(
+              'Server Failure happened \n please try again later')));
       verify(dataSource.getWeatherForecast('test'));
       verify(networkInfo.getCurrentConnectionState);
     });

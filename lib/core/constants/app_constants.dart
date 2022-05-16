@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 
 ThemeMode mode = ThemeMode.light;
 
-bool isFTemp = false;
+late bool isFTempValue;
 
-bool isMileSpeed = false;
+late bool isMileValue;
+
+const String isFTempKey = 'isFTemp';
+const String isMileKey = 'isMile';

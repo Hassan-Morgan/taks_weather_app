@@ -4,4 +4,4 @@ const String WEATHER_FORECAST = '/forecast.json';
 
 const String SEARCH = '/search.json';
 
-const String API_KEY = '87790976d93049e69f9165926222703';
+const String API_KEY = '028e8cb7e34d43b391e140136221605';

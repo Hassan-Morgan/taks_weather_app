@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:taqs/core/utils/temp_and_speed_selectors/temprature_selector.dart';
 import 'package:taqs/features/weather_forecast/domain/entities/sub_entities/astro_enitity.dart';
 import 'package:taqs/features/weather_forecast/domain/entities/sub_entities/day_weather_entity.dart';
-import 'package:taqs/features/weather_forecast/presentation/widgets/details_container.dart';
+import 'package:taqs/core/presentation/shared_widgets/details_container.dart';
 
 import '../../../../core/presentation/shared_widgets/details_item.dart';
 

@@ -1,9 +1,9 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:taqs/features/search/presentation/pages/search_page.dart';
 import 'package:taqs/features/weather_forecast/presentation/logic/weather_forecast_cubit.dart';
 
+import '../../../features/search/presentation/logic/search_cubit/search_cubit.dart';
+import '../../../features/search/presentation/logic/search_cubit/search_states/search_states.dart';
 import 'custom_button.dart';
 
 class ErrorPage extends StatelessWidget {
@@ -45,11 +45,8 @@ class ErrorPage extends StatelessWidget {
                 BlocProvider.of<WeatherForecastCubit>(context)
                     .getWeatherForecastWithLocation();
               } else if (pageIndex == 2) {
-                Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => SearchPage(),
-                    ));
+                BlocProvider.of<SearchCubit>(context)
+                    .emit(SearchStates.initial());
               }
             },
             buttonName: 'Retry',

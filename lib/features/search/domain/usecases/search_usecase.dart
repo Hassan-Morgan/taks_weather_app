@@ -22,5 +22,5 @@ class SearchParams extends Equatable {
   const SearchParams(this.q);
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [q];
 }

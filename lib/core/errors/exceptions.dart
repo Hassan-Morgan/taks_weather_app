@@ -1,10 +1,13 @@
 import 'package:equatable/equatable.dart';
 
 class ServerException extends Equatable implements Exception {
-  final int exceptionCode;
-
-  const ServerException(this.exceptionCode);
+  const ServerException();
 
   @override
-  List<Object?> get props => [exceptionCode];
+  List<Object?> get props => [];
+}
+
+class CashException extends Equatable implements Exception {
+  @override
+  List<Object?> get props => [];
 }

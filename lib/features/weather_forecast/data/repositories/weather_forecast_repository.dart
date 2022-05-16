@@ -21,9 +21,8 @@ class WeatherForecastRepositoryImpl extends WeatherForecastRepository {
     if (await networkInfo.getCurrentConnectionState) {
       final result = await dataSource.getWeatherForecast(q);
       return result.fold((l) {
-        ServerException exception = l as ServerException;
-        return Left(ServerFailure(
-            'Server error happened \n Error code ${exception.exceptionCode}'));
+        return const Left(
+            ServerFailure('Server Failure happened \n please try again later'));
       }, (r) => Right(r.toEntity()));
     } else {
       return const Left(NetworkFailure(

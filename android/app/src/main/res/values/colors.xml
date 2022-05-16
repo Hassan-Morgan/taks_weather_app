@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="gradient_end">#3E649E</color>
+    <color name="gradient_start">#CFADAC</color>
+</resources>

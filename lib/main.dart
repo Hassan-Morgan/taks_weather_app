@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:taqs/core/constants/app_constants.dart';
 import 'package:taqs/core/presentation/resources/theme_manager.dart';
+import 'package:taqs/features/settings/presentation/logic/settings_cubit.dart';
 import 'package:taqs/features/weather_forecast/presentation/logic/weather_forecast_cubit.dart';
 import 'package:taqs/features/weather_forecast/presentation/logic/weather_forecast_states/weather_forecast_states.dart';
 import 'package:taqs/injection.dart';
 
 import 'core/presentation/routings/app_router.gr.dart';
 
-void main() {
-  setup();
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await setup();
   runApp(MyApp());
 }
 
@@ -19,9 +21,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) =>
-          sl<WeatherForecastCubit>()..getWeatherForecastWithLocation(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => sl<SettingsCubit>()..getSettingsData(),
+        ),
+        BlocProvider(
+          create: (context) =>
+              sl<WeatherForecastCubit>()..getWeatherForecastWithLocation(),
+        ),
+      ],
       child: BlocBuilder<WeatherForecastCubit, WeatherForecastStates>(
         builder: (context, state) => MaterialApp.router(
           themeMode: mode,

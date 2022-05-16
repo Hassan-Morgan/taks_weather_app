@@ -58,7 +58,7 @@ void main() {
       when(retrofit.getSearch(any, any)).thenThrow(dioError);
       final result = await searchDataSource.search('test');
       verify(retrofit.getSearch(API_KEY, 'test'));
-      expect(result, const Left(ServerException(1)));
+      expect(result, const Left(ServerException()));
     },
   );
 }

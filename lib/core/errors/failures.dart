@@ -24,3 +24,7 @@ class RequestServicesFailure extends Failure {
 class GetPermissionFailure extends Failure {
   const GetPermissionFailure(String message) : super(message);
 }
+
+class CashFailure extends Failure {
+  const CashFailure(String message) : super(message);
+}

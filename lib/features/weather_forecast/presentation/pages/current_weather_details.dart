@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:taqs/features/weather_forecast/presentation/widgets/details_container.dart';
+import 'package:taqs/core/presentation/shared_widgets/details_container.dart';
 import 'package:taqs/features/weather_forecast/domain/entities/weather_entity.dart';
 import 'package:taqs/features/weather_forecast/presentation/widgets/current_weather_widget.dart';
 

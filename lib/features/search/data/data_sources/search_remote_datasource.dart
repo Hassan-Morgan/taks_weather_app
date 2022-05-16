@@ -18,8 +18,8 @@ class SearchRemoteDatasourceImpl extends SearchRemoteDatasource {
   Future<Either<Exception, List<SearchModel>>> search(String q) async {
     try {
       return Right(await retrofit.getSearch(API_KEY, q));
-    } on DioError catch (e) {
-      return Left(ServerException(e.error.code));
+    } on DioError {
+      return const Left(ServerException());
     }
   }
 }

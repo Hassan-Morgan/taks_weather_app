@@ -21,8 +21,8 @@ class WeatherForecastDataSourceImpl extends WeatherForecastDataSource {
     try {
       final result = await retrofit.getWeatherForecast(API_KEY, q, 10);
       return Right(result);
-    } on DioError catch (e) {
-      return Left(ServerException(e.error.code));
+    } on DioError {
+      return const Left(ServerException());
     }
   }
 }

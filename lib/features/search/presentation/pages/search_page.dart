@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:taqs/core/presentation/resources/color_manager.dart';
 import 'package:taqs/core/presentation/shared_widgets/custom_button.dart';
 import 'package:taqs/core/presentation/shared_widgets/error.dart';
 import 'package:taqs/core/presentation/shared_widgets/loading.dart';
@@ -7,7 +8,7 @@ import 'package:taqs/features/search/domain/entities/search_entity_list.dart';
 import 'package:taqs/features/search/presentation/logic/search_cubit/search_cubit.dart';
 import 'package:taqs/features/search/presentation/logic/search_weather_cubit/search_weather_cubit.dart';
 import 'package:taqs/features/search/presentation/pages/search_result_weather.dart';
-import 'package:taqs/features/weather_forecast/presentation/widgets/details_container.dart';
+import 'package:taqs/core/presentation/shared_widgets/details_container.dart';
 
 import '../../../../core/presentation/shared_widgets/details_item.dart';
 import '../../../../injection.dart';
@@ -47,23 +48,21 @@ class SearchPage extends StatelessWidget {
 
   Widget _successScreen(BuildContext context, SearchEntityList list) {
     if (list.searchEntity.isEmpty) {
-      return SafeArea(
-        child: Column(
-          children: [
-            _searchInitScreen(context),
-            Expanded(
-              child: Center(
-                child: Text(
-                  'there is no results',
-                  style: TextStyle(
-                    color: Theme.of(context).primaryColor,
-                    fontSize: 24,
-                  ),
+      return Column(
+        children: [
+          _searchInitScreen(context),
+          Expanded(
+            child: Center(
+              child: Text(
+                'there is no results',
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                  fontSize: 24,
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       );
     }
     return SafeArea(
@@ -128,15 +127,24 @@ class SearchPage extends StatelessWidget {
             Form(
               key: formKey,
               child: TextFormField(
-                controller: controller,
                 decoration: InputDecoration(
-                  labelText: 'enter your search',
-                  border: OutlineInputBorder(
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
                     borderSide: BorderSide(
                       color: Theme.of(context).primaryColor,
                     ),
                   ),
+                  label: Text(
+                    'enter your search',
+                    style: TextStyle(
+                      color: Theme.of(context).primaryColor,
+                    ),
+                  ),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
                 ),
+                controller: controller,
                 validator: (input) {
                   if (input!.length < 3) {
                     return 'input must be at least 3 character';

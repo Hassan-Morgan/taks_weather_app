@@ -77,12 +77,14 @@ void main() {
           'should return ServerFailure when call the search function and server error happen',
           () async {
         when(datasource.search(any)).thenAnswer(
-            (realInvocation) async => const Left(ServerException(1)));
+            (realInvocation) async => const Left(ServerException()));
         final result = await searchRepository.search('test');
         verify(datasource.search('test'));
         verify(networkInfo.getCurrentConnectionState);
-        expect(result,
-            const Left(ServerFailure('Server error happened \n Error code 1')));
+        expect(
+            result,
+            const Left(ServerFailure(
+                'Server Failure happened \n please try again later')));
       });
     },
   );

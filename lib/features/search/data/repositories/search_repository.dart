@@ -23,9 +23,8 @@ class SearchRepositoryImpl extends SearchRepository {
     if (await networkInfo.getCurrentConnectionState) {
       final result = await datasource.search(q);
       return result.fold((Exception exception) {
-        exception as ServerException;
-        return Left(ServerFailure(
-            'Server error happened \n Error code ${exception.exceptionCode}'));
+        return const Left(
+            ServerFailure('Server Failure happened \n please try again later'));
       }, (List<SearchModel> model) {
         SearchEntityList searchEntity =
             SearchEntityList(model.map((e) => e.toEntity()).toList());
