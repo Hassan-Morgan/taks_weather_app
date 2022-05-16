@@ -9,7 +9,7 @@ import 'package:taqs/features/weather_forecast/presentation/pages/current_weathe
 import 'package:taqs/features/weather_forecast/presentation/pages/day_details_page.dart';
 import 'package:taqs/features/weather_forecast/presentation/widgets/current_weather_widget.dart';
 
-import '../../../../core/utils/temp_and_speed_selectors/temprature_selector.dart';
+import '../../../../core/utils/temp_and_speed_selectors/temperature_selector.dart';
 import '../../domain/entities/sub_entities/forecast_entity.dart';
 
 class HomePageSuccess extends StatelessWidget {

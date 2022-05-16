@@ -118,53 +118,58 @@ class SearchPage extends StatelessWidget {
   }
 
   Widget _searchInitScreen(context) {
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Form(
-              key: formKey,
-              child: TextFormField(
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                    borderSide: BorderSide(
-                      color: Theme.of(context).primaryColor,
+    return SafeArea(
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Form(
+                key: formKey,
+                child: TextFormField(
+                  style: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                  ),
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
+                      borderSide: BorderSide(
+                        color: Theme.of(context).primaryColor,
+                      ),
+                    ),
+                    label: Text(
+                      'enter your search',
+                      style: TextStyle(
+                        color: Theme.of(context).primaryColor,
+                      ),
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
                     ),
                   ),
-                  label: Text(
-                    'enter your search',
-                    style: TextStyle(
-                      color: Theme.of(context).primaryColor,
-                    ),
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
+                  controller: controller,
+                  validator: (input) {
+                    if (input!.length < 3) {
+                      return 'input must be at least 3 character';
+                    }
+                    return null;
+                  },
                 ),
-                controller: controller,
-                validator: (input) {
-                  if (input!.length < 3) {
-                    return 'input must be at least 3 character';
-                  }
-                  return null;
-                },
               ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            CustomButton(
-                onPressed: () {
-                  if (formKey.currentState!.validate()) {
-                    BlocProvider.of<SearchCubit>(context)
-                        .search(q: controller.text);
-                  }
-                },
-                buttonName: 'search'),
-          ],
+              const SizedBox(
+                height: 10,
+              ),
+              CustomButton(
+                  onPressed: () {
+                    if (formKey.currentState!.validate()) {
+                      BlocProvider.of<SearchCubit>(context)
+                          .search(q: controller.text);
+                    }
+                  },
+                  buttonName: 'search'),
+            ],
+          ),
         ),
       ),
     );

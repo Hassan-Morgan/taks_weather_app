@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:taqs/core/utils/temp_and_speed_selectors/temprature_selector.dart';
+import 'package:taqs/core/utils/temp_and_speed_selectors/temperature_selector.dart';
 import 'package:taqs/features/weather_forecast/domain/entities/sub_entities/astro_enitity.dart';
 import 'package:taqs/features/weather_forecast/domain/entities/sub_entities/day_weather_entity.dart';
 import 'package:taqs/core/presentation/shared_widgets/details_container.dart';

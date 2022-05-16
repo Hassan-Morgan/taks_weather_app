@@ -33,6 +33,7 @@ class MyApp extends StatelessWidget {
       ],
       child: BlocBuilder<WeatherForecastCubit, WeatherForecastStates>(
         builder: (context, state) => MaterialApp.router(
+          debugShowCheckedModeBanner: false,
           themeMode: mode,
           theme: ThemeManager.lightTheme,
           darkTheme: ThemeManager.darkTheme,

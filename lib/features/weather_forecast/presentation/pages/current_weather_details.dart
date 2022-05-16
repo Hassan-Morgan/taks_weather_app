@@ -8,7 +8,7 @@ import '../../../../core/constants/app_constants.dart';
 import '../../../../core/presentation/resources/color_manager.dart';
 import '../../../../core/presentation/shared_widgets/details_item.dart';
 import '../../../../core/utils/temp_and_speed_selectors/speed_selector.dart';
-import '../../../../core/utils/temp_and_speed_selectors/temprature_selector.dart';
+import '../../../../core/utils/temp_and_speed_selectors/temperature_selector.dart';
 
 class CurrentWeatherDetails extends StatelessWidget {
   final WeatherEntity entity;

@@ -14,9 +14,16 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<SettingsCubit, SettingsStates>(
         listener: (context, state) {
-      state.mapOrNull(success: (_) {
+      state.whenOrNull(success: (message) {
         BlocProvider.of<WeatherForecastCubit>(context)
             .getWeatherForecastWithLocation();
+        ScaffoldMessenger.of(context).showSnackBar(
+          _customSnackBar(message, Colors.green),
+        );
+      }, error: (error) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          _customSnackBar(error, Colors.red),
+        );
       });
     }, builder: (context, state) {
       final cubit = BlocProvider.of<SettingsCubit>(context);
@@ -140,6 +147,19 @@ class SettingsPage extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  SnackBar _customSnackBar(final String message, final Color color) {
+    return SnackBar(
+      content: Text(
+        message,
+        style: const TextStyle(
+          color: ColorManager.whiteColor,
+        ),
+      ),
+      backgroundColor: color,
+      duration: const Duration(seconds: 1),
     );
   }
 }
